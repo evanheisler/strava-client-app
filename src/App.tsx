@@ -26,7 +26,7 @@ function App() {
       {accessToken ? (
         <AuthedContainer />
       ) : (
-        <Button onClick={() => login('customLoginState')}>Login</Button>
+        <Button onClick={() => login('strava')}>Login</Button>
       )}
     </>
   );
