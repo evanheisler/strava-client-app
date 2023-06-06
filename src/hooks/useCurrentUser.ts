@@ -4,7 +4,9 @@ import { useStravaHttpClient } from './useStravaHttpClient';
 import { useQuery } from 'react-query';
 
 type StravaAthlete = {
-  id: string;
+  data: {
+    id: string;
+  };
 };
 
 export const useCurrentUser = () => {
@@ -12,18 +14,15 @@ export const useCurrentUser = () => {
 
   const { stravaApi } = useStravaHttpClient();
 
-  const { data, error } = useQuery<StravaAthlete>(
+  const { data, error, isLoading } = useQuery<StravaAthlete>(
     'getAthlete',
     async () => await stravaApi.get(`/athlete`),
     { enabled: !!accessToken }
   );
 
-  // if (!data) {
-  //   throw new Error('FIX ME');
-  // }
-
   return {
     data,
     error,
+    isLoading,
   };
 };

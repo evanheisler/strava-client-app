@@ -23,15 +23,15 @@ export const stravaOauth2Config: TAuthConfig = {
   decodeToken: false,
 };
 
-const stravaApi = axios.create({
-  baseURL: 'https://www.strava.com/api/v3',
-  headers: {
-    'Content-type': 'application/json',
-  },
-});
-
 export const useStravaHttpClient = () => {
   const { token } = useContext(AuthContext);
+
+  const stravaApi = axios.create({
+    baseURL: 'https://www.strava.com/api/v3',
+    headers: {
+      'Content-type': 'application/json',
+    },
+  });
 
   stravaApi.interceptors.request.use(
     async (config) => {
