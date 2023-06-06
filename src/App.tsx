@@ -1,7 +1,6 @@
 import { Alert, Skeleton } from '@mui/material';
 import { useContext } from 'react';
 import { AuthContext } from 'react-oauth2-code-pkce';
-import './App.css';
 import { AuthedContainer } from './components/AuthedContainer';
 import { Navigation } from './components/Navigation';
 
