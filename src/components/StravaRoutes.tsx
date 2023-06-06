@@ -1,4 +1,4 @@
-import { Alert, Skeleton } from '@mui/material';
+import { Alert, Box, Grid, Skeleton } from '@mui/material';
 import { useQuery } from 'react-query';
 import { useCurrentUser } from '../hooks/useCurrentUser';
 import { useStravaHttpClient } from '../hooks/useStravaHttpClient';
@@ -33,16 +33,23 @@ export const StravaRoutes = () => {
     enabled: !!userId,
   });
 
-  const error = userError || routesError;
+  const error = userError || (routesError as boolean);
   const isLoading = isLoadingUser || isLoadingRoutes;
 
   return (
     <>
-      {error && <Alert severity="error">Something went wrong.</Alert>}
-      {isLoading && <Skeleton variant="text" sx={{ fontSize: '1rem' }} />}
-      {userRoutes?.map((route) => (
-        <StravaRoute key={route.id} route={route} />
-      ))}
+      <Box sx={{ flexGrow: 1 }} marginTop={4}>
+        {error && <Alert severity="error">Something went wrong.</Alert>}
+        {isLoading && <Skeleton variant="text" sx={{ fontSize: '1rem' }} />}
+
+        <Grid container spacing={3}>
+          {userRoutes?.map((route) => (
+            <Grid item xs={4} key={route.id}>
+              <StravaRoute route={route} />
+            </Grid>
+          ))}
+        </Grid>
+      </Box>
     </>
   );
 };

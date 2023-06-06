@@ -1,7 +1,9 @@
 export type StravaRouteType = {
   name: string;
-  id: string;
+  id: number;
+  id_str: string;
   estimated_moving_time: number; // Seconds
+  segments?: Record<string, any>[];
 };
 
 export type StravaAthleteType = {
