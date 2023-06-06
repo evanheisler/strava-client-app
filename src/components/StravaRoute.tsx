@@ -47,7 +47,9 @@ export const StravaRoute = ({ route }: { route: StravaRouteType }) => {
         {!isLoading && stravaRoute ? (
           <ul>
             {stravaRoute.segments?.map((segment) => (
-              <li key={segment.id}>{segment.name}</li>
+              <li key={segment.id}>
+                <Typography variant="body2">{segment.name}</Typography>
+              </li>
             ))}
           </ul>
         ) : (
