@@ -12,10 +12,7 @@ export const stravaOauth2Config: TAuthConfig = {
   tokenEndpoint: 'https://www.strava.com/oauth/token',
   redirectUri: 'http://localhost:5173/',
   scope: 'read_all',
-  onRefreshTokenExpire: (event: TRefreshTokenExpiredEvent) =>
-    window.confirm(
-      'Session expired. Refresh page to continue using the site?'
-    ) && event.login(),
+  onRefreshTokenExpire: (event: TRefreshTokenExpiredEvent) => event.login(),
   extraAuthParameters: {
     responseType: 'code',
   },

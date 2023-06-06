@@ -3,7 +3,7 @@ import { useCurrentUser } from '../hooks/useCurrentUser';
 import { useQuery } from 'react-query';
 import { useStravaHttpClient } from '../hooks/useStravaHttpClient';
 
-export const Routes = () => {
+export const StravaRoutes = () => {
   const { error: userError, data: user } = useCurrentUser();
   const { stravaApi } = useStravaHttpClient();
 
